@@ -34,7 +34,7 @@ public class InfectedController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCountry(@PathVariable long id) {
+    public void deleteCountry(@PathVariable int id) {
         infectedRepository.deleteInfected(id);
     }
 

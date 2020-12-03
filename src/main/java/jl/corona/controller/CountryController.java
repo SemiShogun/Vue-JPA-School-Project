@@ -33,8 +33,7 @@ public class CountryController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCountry(@PathVariable long id) {
-        System.out.println(id);
+    public void deleteCountry(@PathVariable int id) {
         countryRepository.deleteCountry(id);
     }
 

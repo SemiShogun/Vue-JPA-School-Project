@@ -71,7 +71,7 @@ public class CountryRepository {
             em.getTransaction().begin();
             Country country = em.find(Country.class, inf.getId());
             if (country != null) {
-                em.merge(country);
+                em.merge(inf);
             }
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -80,7 +80,7 @@ public class CountryRepository {
         }
     }
 
-    public void deleteCountry(long id) {
+    public void deleteCountry(int id) {
         try {
             em.getTransaction().begin();
             Country country = em.find(Country.class, id);

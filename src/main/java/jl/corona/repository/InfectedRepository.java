@@ -54,7 +54,7 @@ public class InfectedRepository {
         }
     }
 
-    public Infected readInfected(long id) {
+    public Infected readInfected(int id) {
         Infected infected = null;
         try {
             em.getTransaction().begin();
@@ -71,7 +71,7 @@ public class InfectedRepository {
             em.getTransaction().begin();
             Infected infected = em.find(Infected.class, inf.getId());
             if (infected != null) {
-                em.merge(infected);
+                em.merge(inf);
             }
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -80,7 +80,7 @@ public class InfectedRepository {
         }
     }
 
-    public void deleteInfected(long id) {
+    public void deleteInfected(int id) {
         try {
             em.getTransaction().begin();
             Infected infected = em.find(Infected.class, id);
