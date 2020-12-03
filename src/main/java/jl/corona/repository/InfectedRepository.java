@@ -54,7 +54,7 @@ public class InfectedRepository {
         }
     }
 
-    public Infected readInfected(int id) {
+    public Infected readInfected(long id) {
         Infected infected = null;
         try {
             em.getTransaction().begin();
@@ -80,7 +80,7 @@ public class InfectedRepository {
         }
     }
 
-    public void deleteInfected(int id) {
+    public void deleteInfected(long id) {
         try {
             em.getTransaction().begin();
             Infected infected = em.find(Infected.class, id);

@@ -1,5 +1,7 @@
 package jl.corona.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,9 +9,8 @@ import javax.persistence.*;
 @NamedQuery(name="Infected.findAll", query="SELECT e FROM Infected e")
 public class Infected {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="infected_Id")
-    private long Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @Column(name="name", nullable = false)
     private String name;
@@ -20,16 +21,17 @@ public class Infected {
     @Column(name="age", nullable = false)
     private int age;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="country_Id")
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(nullable = false)
+    @JsonBackReference
     private Country country;
 
-    public long getId() {
-        return Id;
+    public int getId() {
+        return id;
     }
 
-    public void setId(long id) {
-        Id = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

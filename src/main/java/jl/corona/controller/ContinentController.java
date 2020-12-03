@@ -27,4 +27,15 @@ public class ContinentController {
     }
 
 
+    @PutMapping()
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void updateContinent(@RequestBody Continent continent) {
+        continentRepository.updateContinent(continent);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCountry(@PathVariable long id) {
+        continentRepository.deleteContinent(id);
+    }
 }

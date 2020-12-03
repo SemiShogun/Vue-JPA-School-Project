@@ -1,6 +1,9 @@
 package jl.corona.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -8,22 +11,22 @@ import java.util.List;
 @NamedQuery(name="Continent.findAll", query="SELECT e FROM Continent e")
 public class Continent {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="continent_Id")
-    private Long Id;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private int id;
 
     @Column(name="continentName", nullable = false)
     private String continentName;
 
-    @OneToMany(mappedBy = "countryName")
+    @OneToMany(fetch=FetchType.LAZY, mappedBy = "continent", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Country> countries;
 
-    public Long getId() {
-        return Id;
+    public int getId() {
+        return id;
     }
 
-    public void setId(Long id) {
-        Id = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getContinentName() {

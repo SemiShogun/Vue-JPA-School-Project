@@ -1,5 +1,6 @@
 package jl.corona.controller;
 
+import jl.corona.entity.Country;
 import jl.corona.entity.Infected;
 import jl.corona.repository.InfectedRepository;
 import org.springframework.http.HttpStatus;
@@ -24,4 +25,17 @@ public class InfectedController {
     public void createInfected(@RequestBody Infected infected) {
         infectedRepository.createInfected(infected);
     }
+
+    @PutMapping()
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void updateInfected(@RequestBody Infected infected) {
+        infectedRepository.updateInfected(infected);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCountry(@PathVariable long id) {
+        infectedRepository.deleteInfected(id);
+    }
+
 }

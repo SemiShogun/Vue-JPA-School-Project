@@ -1,7 +1,6 @@
 package jl.corona.controller;
 
 import jl.corona.entity.Country;
-import jl.corona.entity.Infected;
 import jl.corona.repository.CountryRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +23,12 @@ public class CountryController {
     @ResponseStatus(HttpStatus.CREATED)
     public void createCountries(@RequestBody Country country) {
         countryRepository.createCountry(country);
+    }
+
+    @PutMapping()
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void updateCountry(@RequestBody Country country) {
+        countryRepository.updateCountry(country);
     }
 
     @DeleteMapping("/{id}")

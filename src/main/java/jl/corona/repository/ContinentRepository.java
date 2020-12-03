@@ -54,7 +54,7 @@ public class ContinentRepository {
         }
     }
 
-    public Continent readContinent(int id) {
+    public Continent readContinent(long id) {
         Continent continent = null;
         try {
             em.getTransaction().begin();
@@ -80,7 +80,7 @@ public class ContinentRepository {
         }
     }
 
-    public void deleteContinent(int id) {
+    public void deleteContinent(long id) {
         try {
             em.getTransaction().begin();
             Continent continent = em.find(Continent.class, id);
